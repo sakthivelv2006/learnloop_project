@@ -42,7 +42,6 @@ export default function LearningModule() {
   const currentSkill = skill || localStorage.getItem("currentSkill") || "General Skill";
 
   // Generate room ID
-<<<<<<< HEAD
 
 
  const generateRoomId = () => {
@@ -58,18 +57,6 @@ export default function LearningModule() {
 };
 
 
-=======
-  const generateRoomId = () => {
-    if (!currentUser || !peerUser || !currentSkill) {
-      console.log("Missing data:", { currentUser, peerUser, currentSkill });
-      return null;
-    }
-
-    // Sort names alphabetically for consistency
-    const users = [currentUser, peerUser].sort();
-    return `${users[0]}_${users[1]}_${currentSkill}`.replace(/\s+/g, '_');
-  };
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
 
   const roomId = generateRoomId();
 

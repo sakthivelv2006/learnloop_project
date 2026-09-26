@@ -6,14 +6,9 @@ export default function IncomingRequests() {
   const navigate = useNavigate();
   const [incoming, setIncoming] = useState([]);
   const [sent, setSent] = useState([]);
-<<<<<<< HEAD
 
   const userId = localStorage.getItem("userId");
   const currentUserName = localStorage.getItem("name");
-=======
-  const userId = localStorage.getItem("userId");
-  const currentUserName = localStorage.getItem("name"); // Get current user name
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
 
   useEffect(() => {
     fetchIncoming();
@@ -49,7 +44,6 @@ export default function IncomingRequests() {
     fetchIncoming();
   };
 
-<<<<<<< HEAD
   // 🔥 NORMALIZE FUNCTION
   const normalize = (str) =>
     str?.trim().toLowerCase().replace(/\s+/g, "_");
@@ -83,48 +77,11 @@ export default function IncomingRequests() {
       state: {
         peer: cleanPeer,
         skill: cleanSkill,
-=======
-  const handleStartLearning = (req, isSender) => {
-    // FIXED: Determine peer name correctly
-    let peerName = "";
-    
-    if (isSender) {
-      // If I'm the sender (Sarwesh), peer is the receiver (Oviya)
-      peerName = req.receiverName;
-      console.log("I'm the sender, peer is receiver:", peerName);
-    } else {
-      // If I'm the receiver (Oviya), peer is the sender (Sarwesh)
-      peerName = req.senderName;
-      console.log("I'm the receiver, peer is sender:", peerName);
-    }
-    
-    console.log("Starting learning session:", {
-      currentUser: currentUserName,
-      peer: peerName,
-      skill: req.skillName,
-      isSender: isSender
-    });
-
-    // CRITICAL: Store peer name in localStorage BEFORE navigation
-    localStorage.setItem("peerName", peerName);
-    localStorage.setItem("currentSkill", req.skillName);
-    localStorage.setItem("currentUserName", currentUserName); // Store current user too
-    
-    // Navigate to learning module with state
-    navigate(`/learning/${req.skillName}`, {
-      state: { 
-        peer: peerName,
-        skill: req.skillName,
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
         isSender: isSender
       }
     });
   };
 
-<<<<<<< HEAD
-=======
-  // Rest of your component remains the same...
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
   const styles = {
     page: { padding: "40px", fontFamily: "Arial" },
     title: { fontSize: "30px", fontWeight: "700", marginBottom: "20px" },
@@ -189,11 +146,7 @@ export default function IncomingRequests() {
           {req.status === "ACCEPTED" && (
             <button
               style={styles.start}
-<<<<<<< HEAD
               onClick={() => handleStartLearning(req, false)}
-=======
-              onClick={() => handleStartLearning(req, false)} // false = I'm the receiver
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
             >
               Start Learning
             </button>
@@ -217,11 +170,7 @@ export default function IncomingRequests() {
           {req.status === "ACCEPTED" && (
             <button
               style={styles.start}
-<<<<<<< HEAD
               onClick={() => handleStartLearning(req, true)}
-=======
-              onClick={() => handleStartLearning(req, true)} // true = I'm the sender
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
             >
               Start Learning
             </button>
@@ -230,8 +179,4 @@ export default function IncomingRequests() {
       ))}
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 94b9ca782b42f65255644e8ec090328b360fd354
